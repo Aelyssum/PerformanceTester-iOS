@@ -39,6 +39,10 @@
                     <constraint firstItem="Nw6-vG-ss8" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" constant="3" id="zo0-p2-G07"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="lblDescription" destination="Nw6-vG-ss8" id="g5M-km-Adt"/>
+                <outlet property="lblTitle" destination="kOZ-mA-5Uu" id="vJL-1v-Xgp"/>
+            </connections>
             <point key="canvasLocation" x="262.5" y="240"/>
         </tableViewCell>
     </objects>

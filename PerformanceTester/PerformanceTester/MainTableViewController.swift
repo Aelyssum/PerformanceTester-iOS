@@ -10,19 +10,14 @@ import UIKit
 
 class MainTableViewController: UITableViewController {
 
-    var testGroups = [TestGroup]()
-    
-    init() {
-        testGroups.append(FunctionalVsIterative())
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var testGroups = [TestGroupTableViewController]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        TestGroupCell.register(tableView)
+        let vcFunctionalVsIterative = FunctionalVsIterativeTableViewController()
+        testGroups.append(vcFunctionalVsIterative)
+        self.navigationItem.title = "Performance Tester"
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,7 +33,12 @@ class MainTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        NSLog("Count = \(testGroups.count)")
         return testGroups.count
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return TestGroupCell.height
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -46,7 +46,7 @@ class MainTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let vcTestGroup = TestGroupTableViewController(testGroup: testGroups[indexPath.row])
+        let vcTestGroup = testGroups[indexPath.row]
         self.navigationController?.pushViewController(vcTestGroup, animated: true)
     }
 

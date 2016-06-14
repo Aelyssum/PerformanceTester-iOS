@@ -8,27 +8,46 @@
 
 import UIKit
 
+protocol TestParameterDelegate {
+    func testParameterDidUpdate(sender: TestParameterCell, label: String)
+}
+
 class TestParameterCell: UITableViewCell, UITextFieldDelegate {
 
-    static var idReuse = "TestParameterCell"
+    static var idReuse = "cellTestParameter"
+    static var nibName = "TestParameterCell"
+    static var delegate: TestParameterDelegate?
     
     @IBOutlet var label: UILabel!
     @IBOutlet var txtParameter: UITextField!
-    var testParameter: TestGroup.TestParameter!
     
-    class func dequeueOnto(tableView: UITableView, atIndexPath: NSIndexPath, inout forTestParameter: TestGroup.TestParameter) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(idReuse, forIndexPath: atIndexPath) as! TestParameterCell
-        cell.testParameter = forTestParameter
-        cell.label.text! = forTestParameter.label
-        cell.txtParameter.text! = String(forTestParameter.parameter)
-        cell.txtParameter.delegate = cell
-        return cell
+    var intParameter: Int!
+    var dblParameter: Double!
+    
+    class func register(tableView: UITableView) {
+        tableView.registerNib(UINib(nibName: nibName, bundle: nil), forCellReuseIdentifier: idReuse)
     }
-
+    
+    class func dequeueOnto(tableView: UITableView, atIndexPath: NSIndexPath) -> TestParameterCell {
+        return tableView.dequeueReusableCellWithIdentifier(idReuse, forIndexPath: atIndexPath) as! TestParameterCell
+    }
+    
+    func config<T>(label: String, param: T) {
+        self.label.text! = label
+        self.txtParameter.text! = String(param)
+        self.txtParameter.delegate = self
+        if let _ = param as? Int {
+            self.txtParameter.keyboardType = UIKeyboardType.NumberPad
+        } else {
+            self.txtParameter.keyboardType = UIKeyboardType.DecimalPad
+        }
+    }
+    
     func textFieldDidEndEditing(textField: UITextField) {
         if textField == txtParameter {
-            if let doubleVal = Double(txtParameter.text!) {
-                testParameter.parameter = doubleVal
+            if let intParam = Int(txtParameter.text!) {
+                intParameter = intParam
+                TestParameterCell.delegate?.testParameterDidUpdate(self, label: label.text!)
             }
         }
     }

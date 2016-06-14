@@ -10,19 +10,38 @@ import UIKit
 
 class TestCell: UITableViewCell {
 
-    static var idReuse = "TestCell"
+    static var nibName = "TestCell"
+    static var idReuse = "cellTest"
     
-    @IBOutlet var txtTitle: UILabel!
-    @IBOutlet var txtResult: UILabel!
+    static var decimalFormatter = NSNumberFormatter()
     
-    var performanceTest: TestGroup.PerformanceTest!
+    @IBOutlet var lblTitle: UILabel!
+    @IBOutlet var lblResult: UILabel!
+    @IBOutlet var lblUnits: UILabel!
+    @IBOutlet var lblStatus: UILabel!
+    
 
-    class func dequeueOnto(tableView: UITableView, atIndexPath: NSIndexPath, inout forTest: TestGroup.PerformanceTest) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(idReuse, forIndexPath: atIndexPath) as! TestCell
-        cell.performanceTest = forTest
-        cell.txtTitle.text! = forTest.title
-        cell.txtResult.text! = String(forTest.result)
-        return cell
+    class func register(tableView: UITableView) {
+        tableView.registerNib(UINib(nibName: nibName, bundle: nil), forCellReuseIdentifier: idReuse)
+        TestCell.decimalFormatter.usesSignificantDigits = true
+        TestCell.decimalFormatter.minimumSignificantDigits = 3
+        TestCell.decimalFormatter.maximumSignificantDigits = 5
+    }
+    
+    class func dequeueOnto(tableView: UITableView, atIndexPath: NSIndexPath) -> TestCell {
+        return tableView.dequeueReusableCellWithIdentifier(idReuse, forIndexPath: atIndexPath) as! TestCell
+    }
+    
+    func config(test: TestGroupTableViewController.PerformanceTest) {
+        lblTitle.text! = test.title
+        if test.status == .Completed {
+            lblResult.text = TestCell.decimalFormatter.stringFromNumber(test.result)
+            lblUnits.text! = "s"
+        } else {
+            lblResult.text! = ""
+            lblUnits.text! = ""
+        }
+        lblStatus.text! = test.status.rawValue
     }
     
 }

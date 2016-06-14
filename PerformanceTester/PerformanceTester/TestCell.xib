@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,24 +15,62 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzq-No-guW">
-                        <rect key="frame" x="8" y="11" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzq-No-guW">
+                        <rect key="frame" x="8" y="11" width="150" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="oU2-q3-8Gv"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2C-kb-lNS">
-                        <rect key="frame" x="270" y="11" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2C-kb-lNS">
+                        <rect key="frame" x="194" y="11" width="48" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULi-Te-EFv">
+                        <rect key="frame" x="262" y="11.5" width="50" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="uuX-wF-clg"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ntg-SQ-3Ev">
+                        <rect key="frame" x="245" y="11.5" width="9" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="R2C-kb-lNS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jzq-No-guW" secondAttribute="trailing" constant="10" id="2yW-gK-GSW"/>
+                    <constraint firstItem="ULi-Te-EFv" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Eti-30-uQv"/>
+                    <constraint firstItem="jzq-No-guW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="EvB-7G-h1c"/>
+                    <constraint firstItem="jzq-No-guW" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="HDo-IG-YEC"/>
+                    <constraint firstItem="R2C-kb-lNS" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="8" id="KKB-lP-hFY"/>
+                    <constraint firstItem="Ntg-SQ-3Ev" firstAttribute="leading" secondItem="R2C-kb-lNS" secondAttribute="trailing" constant="3" id="Ks0-v2-dUg"/>
+                    <constraint firstItem="Ntg-SQ-3Ev" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="LHO-Zp-nA3"/>
+                    <constraint firstItem="ULi-Te-EFv" firstAttribute="leading" secondItem="Ntg-SQ-3Ev" secondAttribute="trailing" constant="8" id="aAR-Yk-52i"/>
+                    <constraint firstItem="ULi-Te-EFv" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="mel-Wc-me0"/>
+                    <constraint firstItem="R2C-kb-lNS" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="qov-gY-A84"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="KKB-lP-hFY"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
-                <outlet property="txtResult" destination="R2C-kb-lNS" id="dNc-7f-mQt"/>
-                <outlet property="txtTitle" destination="jzq-No-guW" id="yIM-qh-nal"/>
+                <outlet property="lblResult" destination="R2C-kb-lNS" id="l5I-ts-cQH"/>
+                <outlet property="lblStatus" destination="ULi-Te-EFv" id="U5G-wT-rMt"/>
+                <outlet property="lblTitle" destination="jzq-No-guW" id="Qn0-29-DLe"/>
+                <outlet property="lblUnits" destination="Ntg-SQ-3Ev" id="8gP-T0-LWH"/>
             </connections>
+            <point key="canvasLocation" x="61" y="242"/>
         </tableViewCell>
     </objects>
 </document>

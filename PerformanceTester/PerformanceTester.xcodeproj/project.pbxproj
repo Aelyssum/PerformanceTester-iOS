@@ -14,7 +14,6 @@
 		9F16415E1D0DF0C5008DC5DC /* PerformanceTesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F16415D1D0DF0C5008DC5DC /* PerformanceTesterTests.swift */; };
 		9F1641691D0DF0C6008DC5DC /* PerformanceTesterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1641681D0DF0C6008DC5DC /* PerformanceTesterUITests.swift */; };
 		9F1641771D0DF162008DC5DC /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1641761D0DF162008DC5DC /* MainTableViewController.swift */; };
-		9F1641791D0DF1BA008DC5DC /* TestGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1641781D0DF1BA008DC5DC /* TestGroup.swift */; };
 		9F16417C1D0DF22F008DC5DC /* TestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F16417A1D0DF22F008DC5DC /* TestCell.swift */; };
 		9F16417D1D0DF22F008DC5DC /* TestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F16417B1D0DF22F008DC5DC /* TestCell.xib */; };
 		9F1641801D0DF418008DC5DC /* TestParameterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F16417E1D0DF418008DC5DC /* TestParameterCell.swift */; };
@@ -22,7 +21,7 @@
 		9F1641841D0DF82A008DC5DC /* TestGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1641821D0DF82A008DC5DC /* TestGroupCell.swift */; };
 		9F1641851D0DF82A008DC5DC /* TestGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F1641831D0DF82A008DC5DC /* TestGroupCell.xib */; };
 		9F1641871D0DFBEA008DC5DC /* TestGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1641861D0DFBEA008DC5DC /* TestGroupTableViewController.swift */; };
-		9F16418A1D0E28B5008DC5DC /* FunctionalVsIterative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1641891D0E28B5008DC5DC /* FunctionalVsIterative.swift */; };
+		9F16418C1D0E7B7E008DC5DC /* FunctionalVsIterativeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F16418B1D0E7B7E008DC5DC /* FunctionalVsIterativeTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +55,6 @@
 		9F1641681D0DF0C6008DC5DC /* PerformanceTesterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTesterUITests.swift; sourceTree = "<group>"; };
 		9F16416A1D0DF0C6008DC5DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F1641761D0DF162008DC5DC /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
-		9F1641781D0DF1BA008DC5DC /* TestGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestGroup.swift; sourceTree = "<group>"; };
 		9F16417A1D0DF22F008DC5DC /* TestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCell.swift; sourceTree = "<group>"; };
 		9F16417B1D0DF22F008DC5DC /* TestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestCell.xib; sourceTree = "<group>"; };
 		9F16417E1D0DF418008DC5DC /* TestParameterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestParameterCell.swift; sourceTree = "<group>"; };
@@ -64,7 +62,7 @@
 		9F1641821D0DF82A008DC5DC /* TestGroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestGroupCell.swift; sourceTree = "<group>"; };
 		9F1641831D0DF82A008DC5DC /* TestGroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestGroupCell.xib; sourceTree = "<group>"; };
 		9F1641861D0DFBEA008DC5DC /* TestGroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestGroupTableViewController.swift; sourceTree = "<group>"; };
-		9F1641891D0E28B5008DC5DC /* FunctionalVsIterative.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FunctionalVsIterative.swift; path = "Performance Tests/FunctionalVsIterative.swift"; sourceTree = "<group>"; };
+		9F16418B1D0E7B7E008DC5DC /* FunctionalVsIterativeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FunctionalVsIterativeTableViewController.swift; path = "Performance Tests/FunctionalVsIterativeTableViewController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +117,6 @@
 				9F16414C1D0DF0C5008DC5DC /* Main.storyboard */,
 				9F1641761D0DF162008DC5DC /* MainTableViewController.swift */,
 				9F1641861D0DFBEA008DC5DC /* TestGroupTableViewController.swift */,
-				9F1641781D0DF1BA008DC5DC /* TestGroup.swift */,
 				9F16417E1D0DF418008DC5DC /* TestParameterCell.swift */,
 				9F16417F1D0DF418008DC5DC /* TestParameterCell.xib */,
 				9F16417A1D0DF22F008DC5DC /* TestCell.swift */,
@@ -155,7 +152,7 @@
 		9F1641881D0E2852008DC5DC /* Performance Tests */ = {
 			isa = PBXGroup;
 			children = (
-				9F1641891D0E28B5008DC5DC /* FunctionalVsIterative.swift */,
+				9F16418B1D0E7B7E008DC5DC /* FunctionalVsIterativeTableViewController.swift */,
 			);
 			name = "Performance Tests";
 			sourceTree = "<group>";
@@ -299,9 +296,8 @@
 				9F1641491D0DF0C5008DC5DC /* AppDelegate.swift in Sources */,
 				9F1641871D0DFBEA008DC5DC /* TestGroupTableViewController.swift in Sources */,
 				9F1641841D0DF82A008DC5DC /* TestGroupCell.swift in Sources */,
-				9F1641791D0DF1BA008DC5DC /* TestGroup.swift in Sources */,
 				9F1641801D0DF418008DC5DC /* TestParameterCell.swift in Sources */,
-				9F16418A1D0E28B5008DC5DC /* FunctionalVsIterative.swift in Sources */,
+				9F16418C1D0E7B7E008DC5DC /* FunctionalVsIterativeTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
