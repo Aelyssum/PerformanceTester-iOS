@@ -10,43 +10,12 @@ import UIKit
 
 class TestGroupTableViewController: UITableViewController {
     
-//    var helpText: String
-//    
-//    class PerformanceTest {
-//        
-//        enum Status: String {
-//            case WillRun = "\u{2713}"
-//            case WillNotRun = "x"
-//            case IsRunning = "..."
-//            case Completed = "Done"
-//        }
-//        
-//        var title: String
-//        var result: Double
-//        var status: Status
-//        var performanceTest: () -> Double
-//        
-//        init(title: String, performanceTest: () -> Double) {
-//            self.title = title
-//            result = 0
-//            status = .WillRun
-//            self.performanceTest = performanceTest
-//        }
-//    }
-//    
-//    var performanceTests = [PerformanceTest]()
-//    
-//    init(title: String, description: String) {
-//        self.helpText = description
-//        super.init(style: .Grouped)
-//        self.title = title
-//    }
-//    
-    
     var testGroup: TestGroup
+    var queue: dispatch_queue_t
     
     init(testGroup: TestGroup) {
         self.testGroup = testGroup
+        self.queue = dispatch_queue_create(testGroup.title, DISPATCH_QUEUE_SERIAL)
         super.init(style: .Grouped)
     }
     
@@ -99,7 +68,6 @@ class TestGroupTableViewController: UITableViewController {
             let cell = TestParameterCell.dequeueOnto(tableView, atIndexPath: indexPath)
             testGroup.configTestParameter(cell, forIndex: indexPath.row)
             return cell
-//            return testGroup.getTestParameterCell(tableView, indexPath: indexPath)
         } else {
             let cell = TestCell.dequeueOnto(tableView, atIndexPath: indexPath)
             cell.config(testGroup.performanceTests[indexPath.row])
@@ -142,8 +110,12 @@ class TestGroupTableViewController: UITableViewController {
             if test.status == .WillRun {
                 test.status = .IsRunning
                 tableView.reloadData()
-                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INTERACTIVE.rawValue), 0)) {
-                    test.result = test.performanceTest()
+                dispatch_async(queue) {
+                    self.testGroup.setup(test)
+                    let startTime = NSDate()
+                    test.performanceTest()
+                    let endTime = NSDate()
+                    test.result = endTime.timeIntervalSinceDate(startTime)
                     test.status = .Completed
                     dispatch_async(dispatch_get_main_queue()) {
                         self.tableView.reloadData()

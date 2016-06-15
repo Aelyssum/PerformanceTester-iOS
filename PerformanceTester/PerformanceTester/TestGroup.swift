@@ -22,9 +22,9 @@ class TestGroup: TestParameterDelegate {
         var title: String
         var result: Double
         var status: Status
-        var performanceTest: () -> Double
+        var performanceTest: () -> ()
         
-        init(title: String, performanceTest: () -> Double) {
+        init(title: String, performanceTest: () -> ()) {
             self.title = title
             result = 0
             status = .WillRun
@@ -49,14 +49,14 @@ class TestGroup: TestParameterDelegate {
         
     }
     
-//    func getTestParameterCell(tableView: UITableView, indexPath: NSIndexPath) -> TestParameterCell {
-//        let cell = TestParameterCell.dequeueOnto(tableView, atIndexPath: indexPath)
-//        return cell
-//    }
-
     // MARK: - TestParameterDelegate
     
     func testParameterDidUpdate(sender: TestParameterCell, label: String) {
+        
+    }
+    
+    /// Setup any data structures required for a performance test.  Setup called before each performanceTest.  Execution time of setup is not included in performance test results.
+    func setup(performanceTest: PerformanceTest) {
         
     }
     

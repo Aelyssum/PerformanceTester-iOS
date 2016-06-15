@@ -60,38 +60,39 @@ class FunctionalVsIterativeTestGroup: TestGroup {
         }
     }
     
-    // MARK: - Performance Tests
+    // MARK: - Test Setup
     
-    func performanceTestSumFunctional() -> Double {
+    var myArray = [Double]()
+    var sum = 0.0
+    var moments = Moments()
+    var momentsStruc = MomentStruc()
+
+    
+    override func setup(performanceTest: PerformanceTest) {
         let intArray = Array(0 ..< Int(arraySize))
-        let myArray = intArray.map() {
+        myArray = intArray.map() {
             element in
             return Double(element)
         }
-        var sum = 0.0
-        let startTime = NSDate()
+        sum = 0.0
+        moments = Moments()
+        momentsStruc = MomentStruc()
+    }
+    
+    // MARK: - Performance Tests
+    
+    func performanceTestSumFunctional() {
         sum = myArray.reduce(0.0) {
             sum, element in
             
             return sum + element
         }
-        let endTime = NSDate()
-        return endTime.timeIntervalSinceDate(startTime)
     }
     
-    func performanceTestSumIterative() -> Double {
-        let intArray = Array(0 ..< Int(arraySize))
-        let myArray = intArray.map() {
-            element in
-            return Double(element)
-        }
-        var sum = 0.0
-        let startTime = NSDate()
+    func performanceTestSumIterative() {
         for element in myArray {
             sum += element
         }
-        let endTime = NSDate()
-        return endTime.timeIntervalSinceDate(startTime)
     }
     
     class Moments {
@@ -99,39 +100,20 @@ class FunctionalVsIterativeTestGroup: TestGroup {
         var variance = 0.0
     }
     
-    func performanceTestMomentsFunctional() -> Double {
-        let intArray = Array(0 ..< arraySize)
-        let myArray = intArray.map() {
-            element in
-            return Double(element)
-        }
-        var moments = Moments()
-        let startTime = NSDate()
-        //        moments = myArray.reduce(Moments(), combine: +)
+    func performanceTestMomentsFunctional() {
         moments = myArray.reduce(Moments()) {
             moments, element in
             moments.mean += element
             moments.variance += element*element
             return moments
         }
-        let endTime = NSDate()
-        return endTime.timeIntervalSinceDate(startTime)
     }
     
-    func performanceTestMomentsIterative() -> Double {
-        let intArray = Array(0 ..< arraySize)
-        let myArray = intArray.map() {
-            element in
-            return Double(element)
-        }
-        var moments = Moments()
-        let startTime = NSDate()
+    func performanceTestMomentsIterative() {
         for element in myArray {
             moments.mean += element
             moments.variance += element*element
         }
-        let endTime = NSDate()
-        return endTime.timeIntervalSinceDate(startTime)
     }
     
     struct MomentStruc {
@@ -139,16 +121,8 @@ class FunctionalVsIterativeTestGroup: TestGroup {
         var variance = 0.0
     }
     
-    func performanceTestMomentStrucFunctional() -> Double {
-        let intArray = Array(0 ..< arraySize)
-        let myArray = intArray.map() {
-            element in
-            return Double(element)
-        }
-        var moments = MomentStruc()
-        let startTime = NSDate()
-        //        moments = myArray.reduce(Moments(), combine: +)
-        moments = myArray.reduce(MomentStruc()) {
+    func performanceTestMomentStrucFunctional() {
+        momentsStruc = myArray.reduce(MomentStruc()) {
             moments, element in
             var returnMoment = MomentStruc()
             
@@ -156,24 +130,13 @@ class FunctionalVsIterativeTestGroup: TestGroup {
             returnMoment.variance += element*element
             return returnMoment
         }
-        let endTime = NSDate()
-        return endTime.timeIntervalSinceDate(startTime)
     }
     
-    func performanceTestMomentStrucIterative() -> Double {
-        let intArray = Array(0 ..< arraySize)
-        let myArray = intArray.map() {
-            element in
-            return Double(element)
-        }
-        var moments = MomentStruc()
-        let startTime = NSDate()
+    func performanceTestMomentStrucIterative() {
         for element in myArray {
-            moments.mean += element
-            moments.variance += element*element
+            momentsStruc.mean += element
+            momentsStruc.variance += element*element
         }
-        let endTime = NSDate()
-        return endTime.timeIntervalSinceDate(startTime)
     }
     
 
