@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 class FunctionalVsIterativeTestGroup: TestGroup {
     
@@ -42,12 +41,16 @@ class FunctionalVsIterativeTestGroup: TestGroup {
         return 1
     }
     
-    override func getTestParameterCell(tableView: UITableView, indexPath: NSIndexPath) -> TestParameterCell {
-        let cell = TestParameterCell.dequeueOnto(tableView, atIndexPath: indexPath)
-        cell.config("Array Size", param: arraySize)
-        return cell
+    override func configTestParameter(cell: TestParameterCell, forIndex: Int) {
+        cell.config("Array Size", parameter: arraySize)
     }
     
+//    override func getTestParameterCell(tableView: UITableView, indexPath: NSIndexPath) -> TestParameterCell {
+//        let cell = TestParameterCell.dequeueOnto(tableView, atIndexPath: indexPath)
+//        cell.config("Array Size", param: arraySize)
+//        return cell
+//    }
+//    
     // MARK: - TestParameterDelegate method
     
     override func testParameterDidUpdate(sender: TestParameterCell, label: String) {

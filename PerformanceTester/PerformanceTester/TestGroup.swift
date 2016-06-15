@@ -6,7 +6,7 @@
 //  Copyright © 2016 Aelyssum Corp. All rights reserved.
 //
 
-import UIKit
+//import UIKit
 
 class TestGroup: TestParameterDelegate {
     
@@ -45,10 +45,14 @@ class TestGroup: TestParameterDelegate {
         return 0
     }
 
-    func getTestParameterCell(tableView: UITableView, indexPath: NSIndexPath) -> TestParameterCell {
-        let cell = TestParameterCell.dequeueOnto(tableView, atIndexPath: indexPath)
-        return cell
+    func configTestParameter(cell: TestParameterCell, forIndex: Int) {
+        
     }
+    
+//    func getTestParameterCell(tableView: UITableView, indexPath: NSIndexPath) -> TestParameterCell {
+//        let cell = TestParameterCell.dequeueOnto(tableView, atIndexPath: indexPath)
+//        return cell
+//    }
 
     // MARK: - TestParameterDelegate
     

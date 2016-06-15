@@ -96,7 +96,10 @@ class TestGroupTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            return testGroup.getTestParameterCell(tableView, indexPath: indexPath)
+            let cell = TestParameterCell.dequeueOnto(tableView, atIndexPath: indexPath)
+            testGroup.configTestParameter(cell, forIndex: indexPath.row)
+            return cell
+//            return testGroup.getTestParameterCell(tableView, indexPath: indexPath)
         } else {
             let cell = TestCell.dequeueOnto(tableView, atIndexPath: indexPath)
             cell.config(testGroup.performanceTests[indexPath.row])

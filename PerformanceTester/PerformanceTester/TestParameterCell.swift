@@ -32,11 +32,11 @@ class TestParameterCell: UITableViewCell, UITextFieldDelegate {
         return tableView.dequeueReusableCellWithIdentifier(idReuse, forIndexPath: atIndexPath) as! TestParameterCell
     }
     
-    func config<T>(label: String, param: T) {
+    func config<T>(label: String, parameter: T) {
         self.label.text! = label
-        self.txtParameter.text! = String(param)
+        self.txtParameter.text! = String(parameter)
         self.txtParameter.delegate = self
-        if let _ = param as? Int {
+        if let _ = parameter as? Int {
             self.txtParameter.keyboardType = UIKeyboardType.NumberPad
         } else {
             self.txtParameter.keyboardType = UIKeyboardType.DecimalPad
