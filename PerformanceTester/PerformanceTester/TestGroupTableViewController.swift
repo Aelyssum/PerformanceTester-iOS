@@ -8,49 +8,57 @@
 
 import UIKit
 
-class TestGroupTableViewController: UITableViewController, TestParameterDelegate {
+class TestGroupTableViewController: UITableViewController {
     
-    var helpText: String
+//    var helpText: String
+//    
+//    class PerformanceTest {
+//        
+//        enum Status: String {
+//            case WillRun = "\u{2713}"
+//            case WillNotRun = "x"
+//            case IsRunning = "..."
+//            case Completed = "Done"
+//        }
+//        
+//        var title: String
+//        var result: Double
+//        var status: Status
+//        var performanceTest: () -> Double
+//        
+//        init(title: String, performanceTest: () -> Double) {
+//            self.title = title
+//            result = 0
+//            status = .WillRun
+//            self.performanceTest = performanceTest
+//        }
+//    }
+//    
+//    var performanceTests = [PerformanceTest]()
+//    
+//    init(title: String, description: String) {
+//        self.helpText = description
+//        super.init(style: .Grouped)
+//        self.title = title
+//    }
+//    
     
-    class PerformanceTest {
-        
-        enum Status: String {
-            case WillRun = "\u{2713}"
-            case WillNotRun = "x"
-            case IsRunning = "..."
-            case Completed = "Done"
-        }
-        
-        var title: String
-        var result: Double
-        var status: Status
-        var performanceTest: () -> Double
-        
-        init(title: String, performanceTest: () -> Double) {
-            self.title = title
-            result = 0
-            status = .WillRun
-            self.performanceTest = performanceTest
-        }
-    }
+    var testGroup: TestGroup
     
-    var performanceTests = [PerformanceTest]()
-    
-    init(title: String, description: String) {
-        self.helpText = description
+    init(testGroup: TestGroup) {
+        self.testGroup = testGroup
         super.init(style: .Grouped)
-        self.title = title
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         TestParameterCell.register(tableView)
         TestCell.register(tableView)
-        TestParameterCell.delegate = self
+        TestParameterCell.delegate = testGroup
         self.navigationItem.title = title
         self.navigationItem.rightBarButtonItems = [
         UIBarButtonItem(title: "Run", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(runTests)),
@@ -80,25 +88,27 @@ class TestGroupTableViewController: UITableViewController, TestParameterDelegate
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 0 // Error should be overidden by subclass
+            return testGroup.numberOfTestParameters()
         } else {
-            return performanceTests.count            
+            return testGroup.performanceTests.count
         }
     }
     
-    
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = TestCell.dequeueOnto(tableView, atIndexPath: indexPath)
-        cell.config(performanceTests[indexPath.row])
-        return cell
+        if indexPath.section == 0 {
+            return testGroup.getTestParameterCell(tableView, indexPath: indexPath)
+        } else {
+            let cell = TestCell.dequeueOnto(tableView, atIndexPath: indexPath)
+            cell.config(testGroup.performanceTests[indexPath.row])
+            return cell
+        }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if indexPath.section == 1 {
             clearTests()
-            let test = performanceTests[indexPath.row]
+            let test = testGroup.performanceTests[indexPath.row]
             if test.status == .WillRun {
                 test.status = .WillNotRun
             } else if test.status == .WillNotRun {
@@ -110,7 +120,7 @@ class TestGroupTableViewController: UITableViewController, TestParameterDelegate
     var testIndex = 0
     
     func getHelp() {
-        let vcAlert = UIAlertController(title: title, message: helpText, preferredStyle: .Alert)
+        let vcAlert = UIAlertController(title: testGroup.title, message: testGroup.description, preferredStyle: .Alert)
         let dismissAction = UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil)
         vcAlert.addAction(dismissAction)
         self.presentViewController(vcAlert, animated: true, completion: nil)
@@ -123,8 +133,9 @@ class TestGroupTableViewController: UITableViewController, TestParameterDelegate
     }
     
     func runNextTest() {
-        if !performanceTests.isEmpty && testIndex < performanceTests.count {
-            let test = performanceTests[testIndex]
+        if !testGroup.performanceTests.isEmpty && testIndex < testGroup.performanceTests.count {
+            let test = testGroup.performanceTests[testIndex]
+            NSLog("runNextTest: \(test.title)")
             if test.status == .WillRun {
                 test.status = .IsRunning
                 tableView.reloadData()
@@ -145,7 +156,7 @@ class TestGroupTableViewController: UITableViewController, TestParameterDelegate
 
     func clearTests() {
         testIndex = 0
-        for test in performanceTests {
+        for test in testGroup.performanceTests {
             if test.status == .Completed {
                 test.status = .WillRun
             }

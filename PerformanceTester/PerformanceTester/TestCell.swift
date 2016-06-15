@@ -32,7 +32,7 @@ class TestCell: UITableViewCell {
         return tableView.dequeueReusableCellWithIdentifier(idReuse, forIndexPath: atIndexPath) as! TestCell
     }
     
-    func config(test: TestGroupTableViewController.PerformanceTest) {
+    func config(test: TestGroup.PerformanceTest) {
         lblTitle.text! = test.title
         if test.status == .Completed {
             lblResult.text = TestCell.decimalFormatter.stringFromNumber(test.result)

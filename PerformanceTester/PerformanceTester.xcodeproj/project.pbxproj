@@ -21,7 +21,8 @@
 		9F1641841D0DF82A008DC5DC /* TestGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1641821D0DF82A008DC5DC /* TestGroupCell.swift */; };
 		9F1641851D0DF82A008DC5DC /* TestGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F1641831D0DF82A008DC5DC /* TestGroupCell.xib */; };
 		9F1641871D0DFBEA008DC5DC /* TestGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1641861D0DFBEA008DC5DC /* TestGroupTableViewController.swift */; };
-		9F16418C1D0E7B7E008DC5DC /* FunctionalVsIterativeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F16418B1D0E7B7E008DC5DC /* FunctionalVsIterativeTableViewController.swift */; };
+		9F40446B1D10F53500989FA6 /* TestGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F40446A1D10F53500989FA6 /* TestGroup.swift */; };
+		9F40446D1D111E0400989FA6 /* FunctionalVsIterativeTestGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F40446C1D111E0400989FA6 /* FunctionalVsIterativeTestGroup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +63,8 @@
 		9F1641821D0DF82A008DC5DC /* TestGroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestGroupCell.swift; sourceTree = "<group>"; };
 		9F1641831D0DF82A008DC5DC /* TestGroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestGroupCell.xib; sourceTree = "<group>"; };
 		9F1641861D0DFBEA008DC5DC /* TestGroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestGroupTableViewController.swift; sourceTree = "<group>"; };
-		9F16418B1D0E7B7E008DC5DC /* FunctionalVsIterativeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FunctionalVsIterativeTableViewController.swift; path = "Performance Tests/FunctionalVsIterativeTableViewController.swift"; sourceTree = "<group>"; };
+		9F40446A1D10F53500989FA6 /* TestGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestGroup.swift; sourceTree = "<group>"; };
+		9F40446C1D111E0400989FA6 /* FunctionalVsIterativeTestGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FunctionalVsIterativeTestGroup.swift; path = "Performance Tests/FunctionalVsIterativeTestGroup.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				9F16417B1D0DF22F008DC5DC /* TestCell.xib */,
 				9F1641821D0DF82A008DC5DC /* TestGroupCell.swift */,
 				9F1641831D0DF82A008DC5DC /* TestGroupCell.xib */,
+				9F40446A1D10F53500989FA6 /* TestGroup.swift */,
 				9F1641881D0E2852008DC5DC /* Performance Tests */,
 				9F16414F1D0DF0C5008DC5DC /* Assets.xcassets */,
 				9F1641511D0DF0C5008DC5DC /* LaunchScreen.storyboard */,
@@ -152,7 +155,7 @@
 		9F1641881D0E2852008DC5DC /* Performance Tests */ = {
 			isa = PBXGroup;
 			children = (
-				9F16418B1D0E7B7E008DC5DC /* FunctionalVsIterativeTableViewController.swift */,
+				9F40446C1D111E0400989FA6 /* FunctionalVsIterativeTestGroup.swift */,
 			);
 			name = "Performance Tests";
 			sourceTree = "<group>";
@@ -297,7 +300,8 @@
 				9F1641871D0DFBEA008DC5DC /* TestGroupTableViewController.swift in Sources */,
 				9F1641841D0DF82A008DC5DC /* TestGroupCell.swift in Sources */,
 				9F1641801D0DF418008DC5DC /* TestParameterCell.swift in Sources */,
-				9F16418C1D0E7B7E008DC5DC /* FunctionalVsIterativeTableViewController.swift in Sources */,
+				9F40446B1D10F53500989FA6 /* TestGroup.swift in Sources */,
+				9F40446D1D111E0400989FA6 /* FunctionalVsIterativeTestGroup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,6 +528,7 @@
 				9F16416F1D0DF0C6008DC5DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9F1641701D0DF0C6008DC5DC /* Build configuration list for PBXNativeTarget "PerformanceTesterTests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +537,7 @@
 				9F1641721D0DF0C6008DC5DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9F1641731D0DF0C6008DC5DC /* Build configuration list for PBXNativeTarget "PerformanceTesterUITests" */ = {
 			isa = XCConfigurationList;
@@ -540,6 +546,7 @@
 				9F1641751D0DF0C6008DC5DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

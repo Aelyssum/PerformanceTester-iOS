@@ -1,22 +1,23 @@
 //
-//  TableViewController.swift
+//  FunctionalVsIterativeTestGroup.swift
 //  PerformanceTester
 //
-//  Created by Allan Evans on 6/12/16.
+//  Created by Allan Evans on 6/14/16.
 //  Copyright © 2016 Aelyssum Corp. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-class FunctionalVsIterativeTableViewController: TestGroupTableViewController {
-
+class FunctionalVsIterativeTestGroup: TestGroup {
+    
     var arraySize = 1000000
     
     init() {
         super.init(
             title: "Functional vs. Iterative Tests",
             description: "Functional tests use the reduce() method on the array, whereas Iterative tests use a for loop with accumulation"
-            )
+        )
         performanceTests.append(
             PerformanceTest(title: "Functional Sum", performanceTest: performanceTestSumFunctional)
         )
@@ -36,45 +37,17 @@ class FunctionalVsIterativeTableViewController: TestGroupTableViewController {
             PerformanceTest(title: "Iterative Class", performanceTest: performanceTestMomentsIterative)
         )
     }
+
+    override func numberOfTestParameters() -> Int {
+        return 1
+    }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func getTestParameterCell(tableView: UITableView, indexPath: NSIndexPath) -> TestParameterCell {
+        let cell = TestParameterCell.dequeueOnto(tableView, atIndexPath: indexPath)
+        cell.config("Array Size", param: arraySize)
+        return cell
     }
-        
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        } else {
-            return performanceTests.count
-        }
-    }
-
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = TestParameterCell.dequeueOnto(tableView, atIndexPath: indexPath)
-            cell.config("Array Size", param: arraySize)
-            return cell
-        } else {
-            let cell = TestCell.dequeueOnto(tableView, atIndexPath: indexPath)
-            cell.config(performanceTests[indexPath.row])
-            return cell
-        }
-    }
-
+    
     // MARK: - TestParameterDelegate method
     
     override func testParameterDidUpdate(sender: TestParameterCell, label: String) {
@@ -85,7 +58,7 @@ class FunctionalVsIterativeTableViewController: TestGroupTableViewController {
     }
     
     // MARK: - Performance Tests
-
+    
     func performanceTestSumFunctional() -> Double {
         let intArray = Array(0 ..< Int(arraySize))
         let myArray = intArray.map() {
@@ -162,7 +135,7 @@ class FunctionalVsIterativeTableViewController: TestGroupTableViewController {
         var mean = 0.0
         var variance = 0.0
     }
-
+    
     func performanceTestMomentStrucFunctional() -> Double {
         let intArray = Array(0 ..< arraySize)
         let myArray = intArray.map() {
@@ -199,6 +172,6 @@ class FunctionalVsIterativeTableViewController: TestGroupTableViewController {
         let endTime = NSDate()
         return endTime.timeIntervalSinceDate(startTime)
     }
+    
 
 }
-

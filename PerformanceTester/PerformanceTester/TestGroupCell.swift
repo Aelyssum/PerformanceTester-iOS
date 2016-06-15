@@ -21,10 +21,10 @@ class TestGroupCell: UITableViewCell {
         tableView.registerNib(UINib(nibName: nibName, bundle: nil), forCellReuseIdentifier: idReuse)
     }
     
-    class func dequeueOnto(tableView: UITableView, atIndexPath: NSIndexPath, forTestGroup: TestGroupTableViewController) -> TestGroupCell {
+    class func dequeueOnto(tableView: UITableView, atIndexPath: NSIndexPath, forTestGroup: TestGroup) -> TestGroupCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(idReuse, forIndexPath: atIndexPath) as! TestGroupCell
-        cell.lblTitle.text! = forTestGroup.title!
-        cell.lblDescription.text! = forTestGroup.helpText
+        cell.lblTitle.text! = forTestGroup.title
+        cell.lblDescription.text! = forTestGroup.description
         return cell
     }    
 

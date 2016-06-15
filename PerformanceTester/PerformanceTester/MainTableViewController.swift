@@ -10,13 +10,13 @@ import UIKit
 
 class MainTableViewController: UITableViewController {
 
-    var testGroups = [TestGroupTableViewController]()
+    var testGroups: [TestGroup] = [
+        FunctionalVsIterativeTestGroup()
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         TestGroupCell.register(tableView)
-        let vcFunctionalVsIterative = FunctionalVsIterativeTableViewController()
-        testGroups.append(vcFunctionalVsIterative)
         self.navigationItem.title = "Performance Tester"
     }
 
@@ -46,7 +46,7 @@ class MainTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let vcTestGroup = testGroups[indexPath.row]
+        let vcTestGroup = TestGroupTableViewController(testGroup: testGroups[indexPath.row])
         self.navigationController?.pushViewController(vcTestGroup, animated: true)
     }
 
