@@ -9,6 +9,11 @@
 import UIKit
 
 protocol TestParameterDelegate {
+    /**
+    Delegate method for passing back an updated test parameter from the UI to a TestGroup instance.
+    - Parameter parameter: the updated test parameter of type Int or Double
+    - Parameter label: the label for the parameter
+    */
     func testParameterDidUpdate<T>(parameter: T, label: String)
 }
 
@@ -32,6 +37,11 @@ class TestParameterCell: UITableViewCell, UITextFieldDelegate {
         return tableView.dequeueReusableCellWithIdentifier(idReuse, forIndexPath: atIndexPath) as! TestParameterCell
     }
     
+    /**
+    This config method should be called within configTestParameter(cell:forIndex) method of an instance of TestGroup.  
+     - Parameter label: the text that will display in the row of TestGroupTableViewController.
+     - Parameter parameter: the test parameter of type Int or Double.
+    */
     func config<T>(label: String, parameter: T) {
         self.label.text! = label
         self.txtParameter.text! = String(parameter)

@@ -8,8 +8,14 @@
 
 import UIKit
 
+/**
+ The MainTableViewController displays all test groups for selection.  Simply add instances of subclasses of TestGroup to the testGroups array.
+ */
 class MainTableViewController: UITableViewController {
 
+    /**
+    Initialize this array with instances of each TestGroup subclass.
+    */
     var testGroups: [TestGroup] = [
         FunctionalVsIterativeTestGroup()
     ]
