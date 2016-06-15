@@ -51,8 +51,8 @@ class TestGroup: TestParameterDelegate {
     
     // MARK: - TestParameterDelegate
     
-    func testParameterDidUpdate(sender: TestParameterCell, label: String) {
-        
+    func testParameterDidUpdate<T>(parameter: T, label: String) {
+
     }
     
     /// Setup any data structures required for a performance test.  Setup called before each performanceTest.  Execution time of setup is not included in performance test results.

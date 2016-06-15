@@ -9,7 +9,7 @@
 import UIKit
 
 protocol TestParameterDelegate {
-    func testParameterDidUpdate(sender: TestParameterCell, label: String)
+    func testParameterDidUpdate<T>(parameter: T, label: String)
 }
 
 class TestParameterCell: UITableViewCell, UITextFieldDelegate {
@@ -46,8 +46,9 @@ class TestParameterCell: UITableViewCell, UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
         if textField == txtParameter {
             if let intParam = Int(txtParameter.text!) {
-                intParameter = intParam
-                TestParameterCell.delegate?.testParameterDidUpdate(self, label: label.text!)
+                TestParameterCell.delegate?.testParameterDidUpdate(intParam, label: label.text!)
+            } else if let dblParameter = Double(txtParameter.text!) {
+                TestParameterCell.delegate?.testParameterDidUpdate(dblParameter, label: label.text!)
             }
         }
     }

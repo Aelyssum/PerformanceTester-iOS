@@ -11,6 +11,7 @@ import Foundation
 class FunctionalVsIterativeTestGroup: TestGroup {
     
     var arraySize = 1000000
+    var multipler = 1.0
     
     init() {
         super.init(
@@ -38,25 +39,25 @@ class FunctionalVsIterativeTestGroup: TestGroup {
     }
 
     override func numberOfTestParameters() -> Int {
-        return 1
+        return 2
     }
     
     override func configTestParameter(cell: TestParameterCell, forIndex: Int) {
-        cell.config("Array Size", parameter: arraySize)
+        if forIndex == 0 {
+            cell.config("Array Size", parameter: arraySize)
+        } else {
+            cell.config("Multiplier", parameter: multipler)
+        }
     }
     
-//    override func getTestParameterCell(tableView: UITableView, indexPath: NSIndexPath) -> TestParameterCell {
-//        let cell = TestParameterCell.dequeueOnto(tableView, atIndexPath: indexPath)
-//        cell.config("Array Size", param: arraySize)
-//        return cell
-//    }
-//    
     // MARK: - TestParameterDelegate method
     
-    override func testParameterDidUpdate(sender: TestParameterCell, label: String) {
-        NSLog("testParamterDidUpdate: \(label)")
+    override func testParameterDidUpdate<T>(parameter: T, label: String) {
+        NSLog("testParameterDidUpdate: \(label)")
         if label == "Array Size" {
-            arraySize = sender.intParameter!
+            arraySize = parameter as! Int
+        } else {
+            multipler = parameter as! Double
         }
     }
     
