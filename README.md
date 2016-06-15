@@ -1,7 +1,7 @@
 # PerformanceTester-iOS
 App for run-time performance testing on actual iOS devices
 
-Clone or fork this repository to add your own performance tests.
+Clone or fork this repository to add your own performance tests.  By cloning, forking, downloading, or otherwise using the materials in this repository, you signify your agreement to the terms in the [license agreement](license.md)
 
 Create your own subclass of `TestGroup` to add your own performance test methods.  Within your `TestGroup` subclass initializer, create `PerformanceTest` instances and add them to the `performanceTests` array.  
 ```swift
